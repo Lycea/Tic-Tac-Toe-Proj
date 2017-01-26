@@ -9,7 +9,7 @@ public class CGame
 	private int iUsedFields = 0;
 	
 	//clear the variables
-	public void reset_game() //clear the variables
+	public void reset_game() 
 	{
 		 iGameState = 0;
 		 iaGameArray = new int[3][3];
@@ -46,29 +46,29 @@ public class CGame
 	{
 		int temp_state = iGameState;
 		 temp_state = checkRows();
-		 if(temp_state != 0)
+		 if(temp_state != 0) //if the gamestate isn't 0
 		 {
 			 iGameState = temp_state;
 			 return  iGameState;
 		 }
 		 
 		checkLines();
-		if(temp_state != 0)
+		if(temp_state != 0)//if the gamestate isn't 0
 		 {
 			 iGameState = temp_state;
 			 return  iGameState;
 		 }
 		
 		checkDiagonals();
-		if(temp_state != 0)
+		if(temp_state != 0)//if the gamestate isn't 0
 		 {
 			 iGameState = temp_state;
 			 return  iGameState;
 		 }
 		
-		if(iUsedFields == 9)
+		if(iUsedFields == 9) //if there are no free fields to use
 		{
-			iGameState = 3;
+			iGameState = 3; //game ended in a tie
 			return iGameState;
 		}
 		
@@ -80,8 +80,8 @@ public class CGame
 	{
 		for(int i = 0; i <3; i++)
 		{
-			if(iaGameArray[i][0]==iaGameArray[i][1]&&
-			   iaGameArray[i][0]==iaGameArray[i][2])
+			if(iaGameArray[i][0]==iaGameArray[i][1]&& //if the first and the second slot are filled identical
+			   iaGameArray[i][0]==iaGameArray[i][2]) //an the first and the third slot are filled identical
 			{
 				if(iaGameArray[i][0] == 0)
 				{
@@ -166,14 +166,14 @@ public class CGame
 	//choose a random number, so it's random which player may begin 
 	private int random_Start()
 	{
-		int start = (Math.random() <= 0.5) ? 1 : 2;
+		int start = (Math.random() <= 0.5) ? 1 : 2; //take a random number between one and two
 		return start;
 	}
 	
 	//classconstructor, call the necessary functions to start the game
 	public CGame(boolean human)
 	{
-		 iActualPlayer = random_Start();
+		 iActualPlayer = random_Start();//choose a random player
 		 bHumanPlayer = human;
 		 
 	}
@@ -187,9 +187,15 @@ public class CGame
 	//set the move of the player and increments the used fields
 	public void makeMove(int r, int c)
 	{
-		
-		iaGameArray[r][c] = iActualPlayer;
-		iUsedFields++;
+		if (iaGameArray[r][c]==0)
+		{
+			iaGameArray[r][c] = iActualPlayer; //set the state of the actual player in the slot
+			iUsedFields++; //increments the number of used fields
+		}
+		else
+		{
+			//do nothing
+		}
 	}
 	
 	//return the number of used fields
