@@ -8,24 +8,28 @@ public class CGame
 	private int iGameState  = 0;
 	private int iUsedFields = 0;
 	
-	public void reset_game()
+	//clear the variables
+	public void reset_game() //clear the variables
 	{
 		 iGameState = 0;
 		 iaGameArray = new int[3][3];
 		 iUsedFields = 0;
 	}
 	
-	public boolean getHumanPlayer()
+	//returns if there is a human player or not
+	public boolean getHumanPlayer() 
 	{
 	 return bHumanPlayer;	
 	}
 	
-	public int getActualPlayer()
+	//gets the actual Player
+	public int getActualPlayer() 
 	{
 		return iActualPlayer;
 	}
 	
-	private void changePlayer(int iActualPlayer)
+	//changes the actual player
+	private void changePlayer(int iActualPlayer) 
 	{
 		if(iActualPlayer == 1)
 		{
@@ -37,7 +41,8 @@ public class CGame
 		}
 	}
 	
-	public int checkGameState()
+	//check's the rows and cols if there is a winner or not
+	public int checkGameState() 
 	{
 		int temp_state = iGameState;
 		 temp_state = checkRows();
@@ -70,7 +75,8 @@ public class CGame
 		return 0;
 	}
 	
-	private int checkRows()
+	//checks if there are three identical Symbols in a Row and if so, which ones
+	private int checkRows() 
 	{
 		for(int i = 0; i <3; i++)
 		{
@@ -94,6 +100,7 @@ public class CGame
 		return 0;
 	}
 	
+	//checks if there are three identical Symbols in a line and if so, which ones
 	private int checkLines()
 	{
 		for(int i = 0; i <3; i++)
@@ -118,6 +125,7 @@ public class CGame
 		return 0;
 	}
 	
+	//checks if there are three identical Symbols in a diagonal and if so, which ones
 	private int checkDiagonals()
 	{
 		if(iaGameArray[0][1] ==iaGameArray[1][1]&&
@@ -155,12 +163,14 @@ public class CGame
 		return 0;
 	}
 	
+	//choose a random number, so it's random which player may begin 
 	private int random_Start()
 	{
 		int start = (Math.random() <= 0.5) ? 1 : 2;
 		return start;
 	}
 	
+	//classconstructor, call the necessary functions to start the game
 	public CGame(boolean human)
 	{
 		 iActualPlayer = random_Start();
@@ -168,11 +178,13 @@ public class CGame
 		 
 	}
 	
+	//return the state of the game
 	public int getGameState()
 	{
 		return iGameState;
 	}
 	
+	//set the move of the player and increments the used fields
 	public void makeMove(int r, int c)
 	{
 		
@@ -180,6 +192,7 @@ public class CGame
 		iUsedFields++;
 	}
 	
+	//return the number of used fields
 	public int getUsedFiels()
 	{
 		return iUsedFields;
