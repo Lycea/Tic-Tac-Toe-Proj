@@ -1,7 +1,8 @@
 package v1;
-
+//gamemachanics
 public class CGame
 {
+	//Variables
 	private boolean bHumanPlayer = true;
 	private int iActualPlayer = 0;
 	private int[][] iaGameArray;
