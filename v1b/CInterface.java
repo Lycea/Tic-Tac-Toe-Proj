@@ -57,7 +57,7 @@ public class CInterface
             
             while(true)
             {
-                if(getInput(m.Menue.ordinal())== 4)
+                if(getIntInput(menues.Menue.ordinal())== 4)
                 {
                     bContinue = false;
                     break;
@@ -108,64 +108,65 @@ public class CInterface
                 
             case 1:
                 //game (reset continue back)
+                ip = ip+10;
                 break;
                 
             case 3:
                 //options (change 1,2,3,4, back)
+                ip =ip+20;
                 break;
         }
         
-        switch(pMenueNum)
+        switch(ip)
         {
         	//first button - so initialise singleplayer
-            case 0:
+            case 1:
             	resetGame();
                 steuerung.initSingleplayer();
                 drawBoard();
                 break;
             //second button -so initialise multiplayer
-            case 1:
+            case 2:
             	resetGame();
                 steuerung.initMultiplayer();
                 drawBoard();
                 break;
             
             //third button - so open the options
-            case 2:
+            case 3:
                 drawOptions();
                 break;
             
             //forth button - so close the game
-            case 3:
-                //System.exit(0);
-                return 3;
-     
-            //these nine buttons are for the game field so the player did something
             case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-                //steuerung.playerMadeMove(buttons.indexOf(object)-4);
-                break;
+                //System.exit(0);
+                return 4;
+     
                 
             // this button is the reset button so reset the game     
-            case 13:
+            case 11:
                 steuerung.resetGame();
                 break;
                 
             // this button is the return button in the game so show the menue again    
-            case 14:
+            case 12:
                 drawMenue();;
                 break;
+            // continue    
+            case 13:
+                drawMenue();;
+                break;
+             
+                
+
+            case 21:
+            case 22:
+            case 23:
+            case 24:
                 
             //this is the back button in the options so show the menue again and set the options
-            //cause there could be something changed
-            case 15:
+            //cause there could be something changed    
+            case 25:
                 drawMenue();
                 steuerung.optionsChanged();
                 break;
