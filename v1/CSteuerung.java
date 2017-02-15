@@ -85,53 +85,11 @@ public class CSteuerung
        if(game.getHumanPlayer()== false)
        {
            int[] temp = c.MakeTurn(game.getField(),game.getUsedFiels());
-           switch(temp[0])
-           {
-           		case 0:
-           			if(temp[1] == 0)
-           			{
-           				num = 0;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 1;
-           			}
-           			else
-           			{
-           				num = 2;
-           			}
-           			break;
-           			
-           		case 1:
-           			if(temp[1] == 0)
-           			{
-           				num = 3;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 4;
-           			}
-           			else
-           			{
-           				num = 5;
-           			}
-           			break;
-           			
-           		case 2:
-           			if(temp[1] == 0)
-           			{
-           				num = 6;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 7;
-           			}
-           			else
-           			{
-           				num = 8;
-           			}
-           			break;
-           }
+           
+           //array to field number
+           num = temp[0]*3+temp[1];
+           
+          
            intf.changeButton(num, o.getPlayerSymbol(game.getActualPlayer()));
            game.makeMove(temp[0], temp[1]);
            
@@ -192,53 +150,8 @@ public class CSteuerung
             int[] temp = c.MakeTurn(game.getField(),game.getUsedFiels());
             
             
-            switch(temp[0])
-            {
-            		case 0:
-            			if(temp[1] == 0)
-            			{
-            				num = 0;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 1;
-            			}
-            			else
-            			{
-            				num = 2;
-            			}
-            			break;
-            			
-            		case 1:
-            			if(temp[1] == 0)
-            			{
-            				num = 3;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 4;
-            			}
-            			else
-            			{
-            				num = 5;
-            			}
-            			break;
-            			
-            		case 2:
-            			if(temp[1] == 0)
-            			{
-            				num = 6;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 7;
-            			}
-            			else
-            			{
-            				num = 8;
-            			}
-            			break;
-            }
+          //array to field number
+            num = temp[0]*3+temp[1];
             
             
             intf.changeButton(num, o.getPlayerSymbol(game.getActualPlayer()));
@@ -251,6 +164,7 @@ public class CSteuerung
         
         intf.setInfo(info);
     }
+    
     
     //function to change the options
     public void optionsChanged()
