@@ -18,31 +18,33 @@ import javax.swing.border.EmptyBorder;
  
 public class CInterface extends JFrame implements ActionListener
 {
-    private ArrayList<JButton> buttons = new ArrayList<JButton>();
+    private ArrayList<JButton> baButtons = new ArrayList<JButton>();
     
    //Dialogs
-    private JPanel pBasePane;
-    private JPanel pMenue;
-    private JPanel pBoard;
-    private JPanel pOptions;
     
+        private JPanel pBasePane;
+        private JPanel pMenue;
+        private JPanel pBoard;
+        private JPanel pOptions;
+        
+        
+        //Game dialog controls
+        private JLabel  lGameInfo;
+        
+       
+        //Options dialog controls
+        private JTextField txtNameP1;
+        private JTextField txtNameP2;
+        
+        private JTextField txtSymbP1;
+        private JTextField txtSymbP2;
     
-    //Game dialog controls
-    private JLabel  lGameInfo;
+        private JLabel lNameP1;
+        private JLabel lNameP2;
+        
+        private JLabel lSymbP1;
+        private JLabel lSymbP2;
     
-   
-    //Options dialog controls
-    private JTextField txtNameP1;
-    private JTextField txtNameP2;
-    
-    private JTextField txtSymbP1;
-    private JTextField txtSymbP2;
-
-    private JLabel lNameP1;
-    private JLabel lNameP2;
-    
-    private JLabel lSymbP1;
-    private JLabel lSymbP2;
 
     //create new Steuerungs object
     CSteuerung steuerung = new CSteuerung(this);
@@ -72,7 +74,7 @@ public class CInterface extends JFrame implements ActionListener
         createBasePane(pBasePane);
         
         
-        
+        //initialises main panes
         initMenue();
         initBoard();
         initOptions();
@@ -80,14 +82,14 @@ public class CInterface extends JFrame implements ActionListener
         setContentPane(pBasePane);
         
         
-        //add the panes to the main pane which is a cardboard layout
+        //add the panes to the card layout on the main pane
         pBasePane.add(pMenue, "Menue");
         pBasePane.add(pBoard, "Board");
         pBasePane.add(pOptions, "Options");
         
         
         //register all the listeners for the buttons
-        for (JButton jButton : buttons)
+        for (JButton jButton : baButtons)
         {
             jButton.addActionListener(this);
         }
@@ -117,20 +119,19 @@ public class CInterface extends JFrame implements ActionListener
         createPane(pMenue);
         
         
-        //create button objects
-        
-        buttons.add(createButton(x, y,      width, height, "Singleplayer")); 
-        buttons.add(createButton(x, y+1*30, width, height, "Multiplayer (offline)"));
-        buttons.add(createButton(x, y+2*30, width, height, "Options"));
-        buttons.add(createButton(x, y+3*30, width, height, "Exit"));
+        //create button objects 
+        baButtons.add(createButton(x, y,      width, height, "Singleplayer")); 
+        baButtons.add(createButton(x, y+1*30, width, height, "Multiplayer (offline)"));
+        baButtons.add(createButton(x, y+2*30, width, height, "Options"));
+        baButtons.add(createButton(x, y+3*30, width, height, "Exit"));
         
         //Listener added
         
         //added Buttons to pane
-        pMenue.add(buttons.get(0));
-        pMenue.add(buttons.get(1));
-        pMenue.add(buttons.get(2));
-        pMenue.add(buttons.get(3));
+        pMenue.add(baButtons.get(0));
+        pMenue.add(baButtons.get(1));
+        pMenue.add(baButtons.get(2));
+        pMenue.add(baButtons.get(3));
         
     }
     
@@ -147,30 +148,28 @@ public class CInterface extends JFrame implements ActionListener
         createPane(pBoard);
         
         //add nine buttons for the field
-        buttons.add(createButton(x, y,          width, height, ""));
-        buttons.add(createButton(x+width, y,    width, height, ""));
-        buttons.add(createButton(x+width*2, y,  width, height, ""));
-        buttons.add(createButton(x, y+height,   width, height, ""));
-        buttons.add(createButton(x+width, y+height,   width, height, ""));
-        buttons.add(createButton(x+width*2, y+height,   width, height, ""));
-        buttons.add(createButton(x, y+height*2, width, height, ""));
-        buttons.add(createButton(x+width, y+height*2, width, height, ""));
-        buttons.add(createButton(x+width*2, y+height*2, width, height, ""));
+        baButtons.add(createButton(x, y,          width, height, ""));
+        baButtons.add(createButton(x+width, y,    width, height, ""));
+        baButtons.add(createButton(x+width*2, y,  width, height, ""));
+        baButtons.add(createButton(x, y+height,   width, height, ""));
+        baButtons.add(createButton(x+width, y+height,   width, height, ""));
+        baButtons.add(createButton(x+width*2, y+height,   width, height, ""));
+        baButtons.add(createButton(x, y+height*2, width, height, ""));
+        baButtons.add(createButton(x+width, y+height*2, width, height, ""));
+        baButtons.add(createButton(x+width*2, y+height*2, width, height, ""));
         
         
         //add the restart and the back button
-        buttons.add(createButton(x,         y+height*3, width*3, 20, "Restart"));
-        buttons.add(createButton(x, y+height*3+height/3,width*3, 20, "Back"));
+        baButtons.add(createButton(x,         y+height*3, width*3, 20, "Restart"));
+        baButtons.add(createButton(x, y+height*3+height/3,width*3, 20, "Back"));
         
         //add the info label
         lGameInfo = createLable(100, 0, 200, 20, "info");
         
-        
-        
         //added Buttons to pane
         for(int i = 4;i < 15; i++)
         {
-            pBoard.add(buttons.get(i));
+            pBoard.add(baButtons.get(i));
         }
         
         //add the label to the pane
@@ -189,7 +188,7 @@ public class CInterface extends JFrame implements ActionListener
      	pOptions = new JPanel();
      	createPane(pOptions);
      	
-        buttons.add(createButton(100, 220,180, height, "back"));
+        baButtons.add(createButton(100, 220,180, height, "back"));
         
         
         txtNameP1 = new JTextField("Player 1");
@@ -220,7 +219,7 @@ public class CInterface extends JFrame implements ActionListener
         pOptions.add(lSymbP1);
         pOptions.add(lSymbP2);
         
-        pOptions.add(buttons.get(15));
+        pOptions.add(baButtons.get(15));
     }
     
     
@@ -277,7 +276,7 @@ public class CInterface extends JFrame implements ActionListener
         Object object = ae.getSource();
         CardLayout cl = (CardLayout)(pBasePane.getLayout());
         
-        switch(buttons.indexOf(object))
+        switch(baButtons.indexOf(object))
         {
         	//first button - so initialise singleplayer
             case 0:
@@ -312,7 +311,7 @@ public class CInterface extends JFrame implements ActionListener
             case 10:
             case 11:
             case 12:
-                steuerung.playerMadeMove(buttons.indexOf(object)-4);
+                steuerung.playerMadeMove(baButtons.indexOf(object)-4);
                 break;
                 
             // this button is the reset button so reset the game     
@@ -355,8 +354,8 @@ public class CInterface extends JFrame implements ActionListener
     //change the given number of button to the given text
     public void changeButton(int id,String title)
     {
-        buttons.get(id+4).setText(title);
-        buttons.get(id+4).setEnabled(true);  
+        baButtons.get(id+4).setText(title);
+        baButtons.get(id+4).setEnabled(true);  
     }
     
     //this function will set all buttons back to no text

@@ -25,9 +25,6 @@ public class CSteuerung
         intf.resetGame();
         
         
-        
-        //resets the came data
-        
         //initialises a new game
         if(game.getHumanPlayer()==false)
         {
@@ -49,55 +46,9 @@ public class CSteuerung
         String sInfo = "";
         int num = 0;
         
-        switch(fieldnum)
-        {
-            case 0:
-                row = 0;
-                col = 0;
-                break;
-                
-            case 1:
-                row = 0;
-                col = 1;
-                break;
-                
-            case 2:
-                row = 0;
-                col = 2;
-                break;
-                
-                
-            case 3:
-                row = 1;
-                col = 0;
-                break;
-                
-            case 4:
-                row = 1;
-                col = 1;
-                break;
-                
-            case 5:
-                row = 1;
-                col = 2;
-                break;
-                
-            case 6:
-                row = 2;
-                col = 0;
-                break;
-                
-            case 7:
-                row = 2;
-                col = 1;
-                break;
-                
-            case 8:
-                row = 2;
-                col = 2;
-                break;
-        }
         
+        col =fieldnum%3;
+        row =(int)Math.floor(fieldnum/3) ;
         
         
         intf.changeButton(fieldnum, o.getPlayerSymbol(game.getActualPlayer()));
