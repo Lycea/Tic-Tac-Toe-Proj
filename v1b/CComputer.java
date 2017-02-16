@@ -1,4 +1,4 @@
-package v1b;
+//package v1b;
 import java.util.Random;
 
 public class CComputer {
