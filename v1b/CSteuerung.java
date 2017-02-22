@@ -1,4 +1,4 @@
-//package v1b;
+package v1b;
 
 
 public class CSteuerung
@@ -49,55 +49,9 @@ public class CSteuerung
         String sInfo = "";
         int num = 0;
         
-        switch(fieldnum)
-        {
-            case 0:
-                row = 0;
-                col = 0;
-                break;
-                
-            case 1:
-                row = 0;
-                col = 1;
-                break;
-                
-            case 2:
-                row = 0;
-                col = 2;
-                break;
-                
-                
-            case 3:
-                row = 1;
-                col = 0;
-                break;
-                
-            case 4:
-                row = 1;
-                col = 1;
-                break;
-                
-            case 5:
-                row = 1;
-                col = 2;
-                break;
-                
-            case 6:
-                row = 2;
-                col = 0;
-                break;
-                
-            case 7:
-                row = 2;
-                col = 1;
-                break;
-                
-            case 8:
-                row = 2;
-                col = 2;
-                break;
-        }
         
+        col =fieldnum%3;
+        row =(int)Math.floor(fieldnum/3) ;
         
         
         intf.changeButton(fieldnum, o.getPlayerSymbol(game.getActualPlayer()));
@@ -134,53 +88,11 @@ public class CSteuerung
        if(game.getHumanPlayer()== false)
        {
            int[] temp = c.MakeTurn(game.getField(),game.getUsedFiels());
-           switch(temp[0])
-           {
-           		case 0:
-           			if(temp[1] == 0)
-           			{
-           				num = 0;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 1;
-           			}
-           			else
-           			{
-           				num = 2;
-           			}
-           			break;
-           			
-           		case 1:
-           			if(temp[1] == 0)
-           			{
-           				num = 3;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 4;
-           			}
-           			else
-           			{
-           				num = 5;
-           			}
-           			break;
-           			
-           		case 2:
-           			if(temp[1] == 0)
-           			{
-           				num = 6;
-           			}
-           			else if(temp[1]== 1)
-           			{
-           				num = 7;
-           			}
-           			else
-           			{
-           				num = 8;
-           			}
-           			break;
-           }
+           
+           //array to field number
+           num = temp[0]*3+temp[1];
+           
+          
            intf.changeButton(num, o.getPlayerSymbol(game.getActualPlayer()));
            game.makeMove(temp[0], temp[1]);
            
@@ -241,53 +153,8 @@ public class CSteuerung
             int[] temp = c.MakeTurn(game.getField(),game.getUsedFiels());
             
             
-            switch(temp[0])
-            {
-            		case 0:
-            			if(temp[1] == 0)
-            			{
-            				num = 0;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 1;
-            			}
-            			else
-            			{
-            				num = 2;
-            			}
-            			break;
-            			
-            		case 1:
-            			if(temp[1] == 0)
-            			{
-            				num = 3;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 4;
-            			}
-            			else
-            			{
-            				num = 5;
-            			}
-            			break;
-            			
-            		case 2:
-            			if(temp[1] == 0)
-            			{
-            				num = 6;
-            			}
-            			else if(temp[1]== 1)
-            			{
-            				num = 7;
-            			}
-            			else
-            			{
-            				num = 8;
-            			}
-            			break;
-            }
+          //array to field number
+            num = temp[0]*3+temp[1];
             
             
             intf.changeButton(num, o.getPlayerSymbol(game.getActualPlayer()));
