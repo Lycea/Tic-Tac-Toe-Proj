@@ -28,3 +28,6 @@
   * colored fields instead of sign
   * colored fields with sign
   * own picture as sign (?)
+
+* ui improvements
+  * make it look nicer with maybe static looks
